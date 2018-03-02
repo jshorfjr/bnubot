@@ -1,0 +1,249 @@
+2.1.2:
+* Mail command accepts "read all"
+* Fixed a bug where D2 operators couldn't kick, ban, or designate
+* Added 'play' 'pause' and 'music' commands
+* The 'mail' command allows deleting specific mail messages
+* Fixed a bug in d2 statstring parsing (acts completed)
+* Refactored BNLS code to improve connection management
+* Added "new day" separator to GuiEventHandler (Issue 113)
+* Unbroke botnet with a super hacky non permanent patch
+* Added BNLS_WARDEN, and some hacky stuff to make it work
+* Use user's preferred timezone for logging in HTMLOutputEventHandler
+* AP will recover existing accounts when safelisting new users
+
+2.1.1 (r1848) 2009-07-08:
+* Enabled hot-swapping plugins (may require re-configuring enabled plugins) (Issue 103)
+* The database editor will prompt before discarding unsaved changes
+* Added graphical flagSpoof editor to the database editor
+* Fixed bug causing expireDays=0 to mean expire immediately
+* Increased the BNLS timeout to 15 seconds
+* Added an exception tracker (Issue 91)
+* Fixed a bug with MCP server login
+* The capture for "?trigger" is no longer case-sensitive
+* Fixed a bug relating to dates in the DatabaseEditor
+* Added SOCKS4/4a support
+* Handle SID_CHATEVENT EID_BROADCAST
+* Added lag icons to HTMLOutputEventHandler
+* Improved the MirrorSelector
+* Improved handling of offline-commands
+* Improved BNLS_VERSIONCHECKEX2 timeout behavior
+* Reduced schema upgrade verbosity for harmless MergerTokens
+* New windows are centered on the screen
+* Added a connection configuration wizard
+* SID_WARDEN error message has a link to Warden FAQ
+* Fixed a race condition that could deadlock when greetings are sent
+* Console plugin now supports color
+* Inactive accounts are set to zero access instead of being deleted
+* Added color scheme from Invigoration
+* Added 'promote' and 'demote' commands
+* Press the up and down keys to cycle through chat history
+* The bot will warn users about alias deletion when 80% of expireDays has passed
+* H2 is now the default database engine
+
+2.1.0 (r1640) 2008-10-06:
+* Added BotNet account login
+* CDKeys are now dumped to cdkeys.processed.txt in a well-formatted way
+* Added /accept and /decline for W3 clan management
+* Added a simple clan creation utility
+* Added options to customize the GUI font size and family
+* Fixed a bug where the version check progress display wouldn't update
+* Battle.net info/error messages are marked as such
+* Fixed a bug where the ChatQueue wouldn't send ops commands
+* Added a telnet plugin compatible with the Battle.net CHAT protocol
+* Added 'whisperback' and 'clearqueue' commands
+* Added DM, MC, Hex, and Base64 encryption - type /dm, /mc, /hex, or /b64 to toggle
+* Added real clan icons (initiate, peon, grunt, shaman, chieftain)
+* Fixed a bug in the 'recruits' command (Issue 77)
+* Fixed several bugs with the 'whois' command
+* Added a Lockdown plugin (requires ops in a clan channel to function)
+* Modified the ChatQueue to use priorities
+* Added logging of debug, info, and error messages via HTMLOutputEventHandler
+* Fixed a bug in the 'mailall' command
+* Added timezone support
+* Fixed a bug where BotNet would leak in to its own profile tab (Issue 75)
+* Fixed a bug that prevented using commands while disconnected (Issue 79)
+* Added an 'addalias' command (Issue 82)
+* The bot will attempt to re-launch itself after downloading an update
+* Added an 'update' command, along with auto-restart
+* Fixed a bug where newlines were allowed in settings fields
+* Growl will be used in preference of the SystemTray API (OSX/Java6 compatibility)
+* Improved the 'add' command to display info about the previous/new ranks
+* Added a database configuration wizard
+* Added a 'timeban' command
+* Alt+V toggles join/part notifications (Issue 76)
+* Auto-promotions can now apply to users with no account (one is auto-created)
+* Fixed a bug with greetings for users with #x in their logon handle
+* Moved the AP logic before the greeting
+* Setting trivia round length to zero disables rounds
+* Added missing sleep()s in BNCS/DigitalText login loop
+* Added support for 26-character (Anthology) SC/D2 keys
+* Added unicode support, and the ability to use it in conjunction with encryption (Issue 80)
+* The chat splitter will now work properly with "/w" and "/f m" (Issue 95)
+* The chat splitter will now work properly with unicode characters (Issue 96)
+* Allow Cayenne to manage the database schema in favor of flat files
+* Added option to display / commands in chat
+* Moved tasks to the GuiDesktop
+* Added per-account flag spoofing
+
+2.0.6 (r1400) 2008-04-21:
+* Added auto-rejoin afer being kicked (Issue 52)
+* Added 'search' and 'searchrank' commands
+* Force Cayenne to use the DriverManager to get a driver
+* Re-enabled info/error responses forwarded to the user
+* Auto-create users that don't exist in the DB when joining a channel
+* Reduced the verbosity of exceptions on the GUI
+* Improved feedback when the database fails to initialize
+* Mail/AP notifications are now whispered
+* Improved the chat long line splitter to use ellipses
+* Missing keys in settings.ini will be added with the default value
+* Vote is now a command which works by Account
+* Fixed a BNetUser perspective bug affecting the ping command
+* ChatQueue: Unban requires ops
+* Fixed logic to decide which connection of a profile is the primary
+* Added relationships to the DB editor
+* Send mail to the bot master when a new command is created
+* ChatQueue will be cleared when changing channels (Issue 72)
+* Never kick/ban without ops
+* Added kP BotNet support
+* Disabled Cayenne logging
+* Trivia is now a command
+* Added deletion rules to the Cayenne mapping file
+* Added a default exception handler
+* Confirm row deletion in DatabaseEditor
+* Version check will complete before connecting to battle.net
+* Removed the parseCommand() workaround
+
+2.0.5 (r1300) 2008-04-09:
+* Added a Cayenne persistence layer to address database problems
+* Added StatString test cases
+* The 'renameaccount' command now picks up the case of the old account name
+* The 'unban' command now infers the user namespace
+* Fixed a bug where super-users couldn't use commands
+* Added more database editors
+* Fixed a bug affecting 'kick' and 'ban' when searching for users
+* Added 'votekick' 'voteban' and 'votecancel' commands
+* Logs will be saved to log.txt by default
+* Added a profile editor
+* Fixed a bug with the chat splitter
+* Added an 'allseen' command
+* Fixed a bug where auto-promotions were case sensitive
+* Remove stale users from the database
+
+2.0.4.2 (r1237) 2008-04-01:
+* Allow use of %keywords% and commands in anti-idles and with /say (Cause of issue 61)
+* Nightly builds are now an update type! They are less stable than Alpha
+* Removed the size restraint on the "What's New" window
+* Added some error handling for conditions where BNI downloads fail
+* Changed the auto-update algorithm to prevent failed download from breaking the jar
+* Added a setting to disable the plug icon for DSHR/DRTL/SSHR/JSTR/STAR/SEXP/W2BN
+* Improved the readability of trivia answers
+* Separated the commands and keywords enable flags (Issue 61)
+
+2.0.4.1 (r1182) 2008-03-19:
+* Added warden support (special thanks to iago and Hdx)
+  - Just drop Starcraft.exe in the bot folder!
+
+2.0.4 Beta (r1174) 2008-03-17:
+* Added DigitalText connection support
+* Fixed a bug where having no connections would cause the GUI to never load
+* Added tag to close the HTML table in HTMLOutputEventHandler (Issue 57)
+* Introduced first pass at music controllers; not yet configurable or fully tested
+  - OSX: iTunes (AppleScript)
+  - Windows: iTunes (ActiveX), Winamp (JDIC-MPControl)
+  - Linux (JDIC-MPControl): Rhythmbox, XMMS, GMusicBrowser
+* Introduced first-pass SWT code to SVN
+* Added a PluginManager for plugin discovery with the JARLoader
+* Changed /rw to StealthBot-style rewhisper (Issue 58)
+* Added the concept of a TimeZone to the HTMLOutputEventHandler
+* Reorganized the Settings class
+* Added a BNLS bot id
+* Changed the way commands respond to fit a more object-oriented model
+* Changed the "What's New" window's layout to use cards instead of tabs
+* Removed the database tab from the settings window
+* Removed the touchUser() exception display
+* Added a /quote command to send text directly to bnet
+* Added an OperatingSystem enumeration utility
+* Added OS-specific version checks; download platform-specific files
+
+2.0.3.1 (r1100) 2008-01-21:
+* Added a setting to customize the userlist display format
+* Added a setting to customize the command response display format
+* Added a setting to enable the HTMLOutput plugin
+* Moved the HTMLOutput userlist to logs
+* Added highlighting of "my user" in the userlist
+* Improved version comparison logic
+* Removed the checkbox to disable the GUI from the GUI
+* Disabled resizing of configuration windows
+* Added logic to prevent KeyManager from choking on tabs
+* Addressed a common problem with Derby and CommandEventHandler.touchUser() 
+* Added BNetUser.toStringEx() to display ping and flags
+* Fixed a bug where 'commander access' was not passed to commands properly
+* Added a 'setauth' command
+* Added a version editor utility
+* Added an option to disable tab completion
+* Added an option to disable minimize to system tray
+
+2.0.3 (r1072) 2008-01-07:
+* Completely redesigned the command subsystem to fit a more object-oriented model
+* Commands not in the database will be created with maximum (master) access
+* Changed server, port, and channel to profile-specific fields
+* Replaced EventHandler semaphores with synchronized code blocks
+* Fixed a race condition with joining restricted channels
+* Fixed a bug with selecting CD keys
+* Added lag icons
+* Improved the logic for constructing the text label on each profile tab
+* Configurable tray notifications
+* Fixed a bug where it was impossible to stay disconnected
+* Connect/disconnect/reconnect affect each connection of a profile
+* Multiple commands can be used at once with a semicolon delimiter
+* Added a 'rejoin' command
+* Added tab-completion style slash command completion
+* Fixed a bug where tab-completion would select all text with certain look and feels
+* Added a "What's New" window
+* Customizable BNetUser.toString()
+
+2.0.2.2 (r1022) 2007-12-22:
+* Fixed a bug that prevented banning users outside of the channel
+* Allow editing cdkeys from the connection settings window
+* Closing profiles
+* Pressing the 'cancel' button on 'new profile' settings window closes the profile
+* Pressing the 'cancel' button when no CD keys are entered will not bring the window back
+* Fixed a bug where 'apply' didn't redraw the window correctly
+* Fixed a bug with lowercase CD keys
+* Improved version comparison logic
+
+2.0.2.1 (r1000) 2007-12-12:
+* Extended Settings read/write methods
+* Fixed a bug where the CLI would cause 100% CPU use
+* Added an option to change the profile in the GUI
+* Fixed a bug where plugins would receive initialize() twice
+* Add settings menu items for each connection of a profile
+* Secondary EHs now receive titleChanged()
+* Better discovery of JDBC drivers
+* Fixed a bug with 'new profile'
+* Added a <Connection> field to plugin events
+* Changed HTMLOutputEventHandler to use profile-specific userlists/logs
+* Moved anti-idle, trigger, and enableGreetings to profile-specific settings
+* Improved Database.getUser(BNetUser)
+* Quick 'add' command
+* Fixed a bug caused by the BNetUser cache
+
+2.0.2 (r978) 2007-12-07:
+* Started the change log
+* Added a tab to the settings window to configure debug logging
+* Allow / commands to be passed through parseCommand()
+* Switched the DB editor to use ConfigTextAreas
+* Fixed a bug where profiles with multiple connections would connect out of order
+* Improved the SortedProperties class to use safer operations, and to include sorting of the keySet() method
+* Moved the responsibility of maintaining a List<BNetUser> to the core package
+* Added wildcard support to the kick and ban commands; very useful combined with direct / commands
+* Fixed a bug where anti-idles would function independently of profiles
+* Modified anti-idles to use each message before resetting the list from anti-idle.txt
+* Improved window position saving logic; save on resize, ignore maximized windows
+* Dispose TaskManager window when not in use (may help alleviate Spaces bug in Leopard) 
+* Setting expireDays=0 now means never expires
+* Fixed case sensitivity of commands when using a Derby database
+* Replaced the outdated BotLayoutManager
+* Fixed packet logging messages; added EID message types to SID_CHATEVENT
+* Fixed a bug where the bot would crash if a clan member's rank changed before SID_CLANLIST was received
+* Added an option to disable the mirror selector

@@ -1,0 +1,34 @@
+How to write plugins:
+
+Create a class that implements net.bnubot.core.EventHandler:
+	package net.bnubot.bot.custom;
+	import net.bnubot.core.Connection;
+	import net.bnubot.core.EventHandler;
+	public class CustomEventHandler implements EventHandler {
+		public CustomEventHandler() {}
+		
+		public void initialize(Connection c) {}
+		public void disable(Connection c) {}
+		
+		public void bnetConnected(Connection source) {}
+		public void bnetDisconnected(Connection source) {}
+		
+		public void joinedChannel(Connection source, String channel) {}
+		public void channelUser(Connection source, String user, int flags, int ping, String statstr) {}
+		public void channelJoin(Connection source, String user, int flags, int ping, String statstr) {}
+		public void channelLeave(Connection source, String user, int flags, int ping, String statstr) {}
+		public void recieveChat(Connection source, String user, String text) {}
+		public void recieveEmote(Connection source, String user, String text) {}
+		public void recieveInfo(Connection source, String text) {}
+		public void recieveError(Connection source, String text) {}
+		public void whisperSent(Connection source, String user, String text) {}
+		public void whisperRecieved(Connection source, String user, String text) {}
+	}
+
+Compile your java class, and place it within your CLASSPATH.	
+
+Launch BNUBot with the -plugin option:
+# java -jar BNUBot.jar -plugin net.bnubot.bot.custom.CustomEventHandler
+	
+You may specify multiple plugins as a colon sparated list:
+# java -jar BNUBot.jar -plugin net.bnubot.bot.custom.CustomEventHandler:net.bnubot.bot.custom.AnotherEventHandler

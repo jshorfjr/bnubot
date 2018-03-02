@@ -1,0 +1,5 @@
+bin/*
+cdkeys*
+database/*
+downloads/*
+settings.ini
