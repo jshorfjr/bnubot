@@ -64,24 +64,25 @@ public class BNetUser {
 		String uAccount;
 		int uNumber = 0;
 
-		System.out.println(user);
+		//System.out.println(user);
 
-		int i = user.indexOf('#');
+		/*
+		int i = user.indexOf('@');
 		if(i != -1) {
 			String num = user.substring(i + 1);
-			System.out.println(num);
 			int j = num.indexOf('#');
 			if(j != -1) {
 				num = num.substring(0, j);
 				this.realm = user.substring(i + j + 2);
 				user = user.substring(0, i) + '@' + this.realm;
+				System.out.println(user);
 			} else {
 				user = user.substring(0, i);
 			}
 
 			uNumber = Integer.parseInt(num);
 		}
-
+		*/
 		String up[] = user.split("@", 2);
 		uAccount = up[0];
 		if(up.length == 2)

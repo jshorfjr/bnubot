@@ -316,10 +316,11 @@ public class GlobalSettings {
 		bnUserToStringUserList = ss.read("bnUserToStringUserList", 5); // Account (BNLogin)
 		bnUserToStringCommandResponse = ss.read("bnUserToStringCommandResponse", 4); // Account
 
+		
 		// Get the release type to check for when doing version checks
 		ReleaseType currentRelease = CurrentVersion.version().getReleaseType();
-		releaseType = ss.read("releaseType", currentRelease);
-
+		releaseType = ReleaseType.Development;
+		
 		if(CurrentVersion.fromJar()) {
 			// If from a JAR, force Nightly
 			if(releaseType.isDevelopment())
@@ -328,6 +329,7 @@ public class GlobalSettings {
 			// Non-jar is always development
 			releaseType = ReleaseType.Development;
 		}
+		
 	}
 
 	public static boolean getDisplayJoinParts() {

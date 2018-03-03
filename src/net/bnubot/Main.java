@@ -127,11 +127,12 @@ public class Main {
 				File logFile = new File("log.txt");
 
 				// Report errors for nightly builds
+				/*
 				if(CurrentVersion.version().getReleaseType().isNightly()
 				&& logFile.exists()
 				&& (logFile.length() > 0))
 					ExceptionReporter.reportErrors(logFile);
-
+				*/
 				if(!logLocationSet)
 					Out.addOutputLogger(new PrintStreamOutputLogger(new PrintStream(logFile)));
 			} catch(Exception e) {
@@ -192,12 +193,13 @@ public class Main {
 		for(int i = 1; i <= GlobalSettings.numBots; i++)
 			Profile.newConnection(i);
 
+		/*
 		if(CurrentVersion.fromJar()) {
 			ReleaseType rt = CurrentVersion.version().getReleaseType();
 			if(!rt.isStable())
 				Out.error(CurrentVersion.class, "WARNING: This is a " + rt.name() + " build. It may contain bugs, or be unstable. Use at your own risk!");
 		}
-
+		*/
 		// Write out any modified settings
 		Settings.store();
 

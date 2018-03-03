@@ -138,6 +138,7 @@ public final class CurrentVersion {
 				Out.exception(e);
 			}
 		}
+		
 		return r;
 	}
 
@@ -146,12 +147,13 @@ public final class CurrentVersion {
 			VER_SVN_REVISION = revision(new File("src"));
 			VER_SVN_SET = true;
 		}
-
+		
 		return VER_SVN_REVISION;
 	}
 
 	public static boolean fromJar() {
 		version();
+		
 		return fromJar;
 	}
 
@@ -202,28 +204,32 @@ public final class CurrentVersion {
 				VER_SVN_REVISION_FILE = Integer.parseInt((String)versionprops.get(sVerSVNRevision));
 
 			// From a JAR has no src folder; from Eclipse has no JAR
-			if(fromJar != (revision() == null))
-				throw new IllegalStateException();
-
+			
+			//if(fromJar != (revision() == null))
+			//	throw new IllegalStateException();
+			
 			if(fromJar) {
-				BUILD_DATE = new Date(Long.parseLong(versionprops.getProperty(sBuildDate)));
+				//BUILD_DATE = new Date(Long.parseLong(versionprops.getProperty(sBuildDate)));
+				BUILD_DATE = new Date();
 				VER_SVN_REVISION = VER_SVN_REVISION_FILE;
+
 			} else {
 				BUILD_DATE = new Date();
 				versionprops.setProperty(sBuildDate, Long.toString(BUILD_DATE.getTime()));
-
+				
 				if((VER_SVN_REVISION_FILE == null) || (VER_SVN_REVISION > VER_SVN_REVISION_FILE)) {
 					Out.info(CurrentVersion.class, "File version (" + VER_SVN_REVISION_FILE + ") does not match calculated (" + VER_SVN_REVISION + ").");
-
-					RELEASE_TYPE = ReleaseType.Development;
+					
 					versionprops.setProperty(sReleaseType, RELEASE_TYPE.name());
 					versionprops.setProperty(sVerSVNRevision, Integer.toString(VER_SVN_REVISION));
 				}
 			}
-
+			
+			
 			VER = new VersionNumber(RELEASE_TYPE, VER_MAJOR, VER_MINOR, VER_REVISION, VER_RELEASE, VER_SVN_REVISION, BUILD_DATE);
 			if(!fromJar)
 				versionprops.store(new FileOutputStream(f), VER.toString());
+
 			return VER;
 		} catch(Exception e) {
 			Out.exception(e);

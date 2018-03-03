@@ -38,10 +38,12 @@ public class VersionNumber {
 	public String toString() {
 		if(VER_STRING != null)
 			return VER_STRING;
-
+		
 		VER_STRING = VER_MAJOR.toString() + '.' + VER_MINOR.toString() + '.' + VER_REVISION.toString();
+		
 		if((VER_RELEASE != null) && (VER_RELEASE != 0))
 			VER_STRING += " Release " + VER_RELEASE.toString();
+		/*
 		if(RELEASE_TYPE.isDevelopment())
 			VER_STRING += " Development";
 		else if(RELEASE_TYPE.isNightly())
@@ -52,10 +54,10 @@ public class VersionNumber {
 			VER_STRING += " Beta";
 		else if(RELEASE_TYPE.isReleaseCandidate())
 			VER_STRING += " RC";
-
 		if(VER_SVN_REVISION != null)
 			VER_STRING += " (r" + VER_SVN_REVISION.toString() + ")";
-
+		*/
+		//System.out.println(VER_STRING);
 		return VER_STRING;
 	}
 
